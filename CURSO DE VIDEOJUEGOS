@@ -1,0 +1,294 @@
+Creando un espacio de trabajo
+Lo primero que debes aprender al empezar
+un proyecto medianamente grande
+es ser organizado, y créeme: cuesta mucho aprender a serlo. Yo te puedo dar algunos
+consejos, no hay problema, pero tú debes continuar y hacer del orden tu forma de vivir
+por lo menos en la programación porque ante todo te
+permitirá mantener en un lugar
+seguro todos los activos de tu proyecto, fáciles de ubicar, fáciles de rehusar, fáciles de
+arreglar, en general, fáciles de mantener.
+Estos algunos de los pasos que yo te recomiendo y que también seguiré en mi
+proyecto de jue
+go, así también estarán ubicados los códigos y encabezados de mi
+proyecto. Esta organización
+se puede dar como una especie de árbol comúnmente
+conocido como directorio. Por ejemplo,
+Figura
+1
+El directorio raíz
+de nuestro proyecto puede estar en cualquier parte de nuestro
+disco duro o disco de red. Además
+dentro del directorio códigos puede considerarse
+una subclasificación entre las versiones de nuestro proyecto, por ejemplo la versión 1,
+versión 1.2, etc.
+10
+Figura
+2
+Ahora que tenemos creado la estructura
+de directorios entonces creamos el
+proyecto en RHIDE
+.
+Desde ahora en adelante me referiré a los directorios en forma relativa
+al directorio raíz del proyecto, por ejemplo, si hablo del archivo
+códigos/prueba.cpp entonces me referiré
+al archivo que está, en el caso mío,
+en c:
+\
+djgpp
+\
+juegos
+\
+Ades
+\
+codigos
+\
+prueba.cpp (MS
+-
+DOS)
+Entramos al directorios código y escribimos RHIDE.
+Figura
+3
+Ahora que nos encontramos dentro de RHIDE podemos ver varios menús, uno
+de ellos es el menú de proyectos
+-
+>abrir proyecto (proyect
+-
+>open proyect,
+desde
+ahora no traduciré los menús por lo que tu debes entender de cual estoy
+hablando
+). Enton
+ces saldrá un dialogo que nos preguntará cual es el nombre del
+proyecto. Este debe ser un nombre explicativo, que diga algo, por ejemplo a mi
+proyecto le pondré ades y el archivo correspondiente será
+ades.gpr
+.
+Para editar los códigos fuentes yo te recomien
+to personalmente usar las
+siguientes opciones
+: anda al menú opciones
+-
+>ambiente
+-
+>opciones del editor y haz clic
+en las siguientes y deja el tamaño de la tabulación así:
+11
+Figura
+4
+Ahora, para compilar nuestro
+código con las bibliotecas Allegro le diremos al
+compilador que las enlace a nuestro proyecto. En el menú opciones
+-
+>bibliotecas
+ingresamos el nombre
+alleg
+y dejamos seleccionada la casilla, tal como lo muestra la
+Figu
+ra
+5
+.
+Figu
+ra
+5
+Luego de ingresar el nombre aparecerá una ventana del proyecto que en un
+futuro mostrará todas las fuentes involucrados en el proyecto. Por ahora crearemos un
+nuevo archivo desde el menú
+archivo
+-
+>nuevo.
+Ahora introduciremos un
+código más o menos canónico para comprobar que
+todo está trabajando en Allegro. Introduce lo siguiente:
+12
+Código Fuente 1.
+#include <stdio.h>
+#include <stdlib.h>
+#include <allegro.h>
+int
+main
+()
+{
+allegro_init
+();
+install_keyboard
+();
+if
+(
+set_gfx_mode
+(
+GFX_AUTOD
+ETECT
+,
+320
+,
+200
+,
+0
+,
+0
+)<
+0
+)
+{
+printf
+(
+"error al iniciar modo grafico
+\
+n"
+);
+allegro_exit
+();
+exit
+(
+-
+1
+);
+}
+textout
+(
+screen
+,
+font
+,
+"Mi primer programa"
+,
+0
+,
+0
+,
+15
+);
+readkey
+();
+allegro_exit
+();
+return
+0
+;
+}
+Ahora que tienes to
+do esto escrito entonces guardalo con el nombre
+ades.c
+,
+luego anda al menú
+proyecto
+-
+>agregar ítem
+y selecciona el archivo que acabas de
+guardar, luego anda
+opciones
+-
+>bibliotecas
+y agrega la biblioteca
+alleg
+(todos estos
+pasos son explicados con más detalle
+s en la página Artebinario, como parte de la
+instalación y ejecución de un programa en Allegro). Anda a
+compilar
+-
+>construir todo
+y
+ya tienes listo el programa para ejecutarlo en
+ejectuar
+-
+>ejecutar
+. Deberías ver algo
+como esto:
+Figura
+6
+Ahora cada vez que entres a RHIDE desde el directorio de códigos se abrirá por
+defecto el proyecto.
+Estableciendo un
+e
+stándar en el desarrollo
+Es bueno siempre establecer un estándar a través del desarrollo, esto quiere
+decir que se debe explicitar cuales son los formatos de archivo, cuales son las
+extensiones de cada tipo, cuales son las bibliotecas que se usarán, cuales
+son las
+opciones de compilación, que no se permitirá, etc. Todo esto sirve cuando se trabaja
+con muchas personas, un grupo de programadores sobre un mismo proyecto. Como
+hacer que un programador no se intrometa en mi código y como yo no me intrometo
+en su
+código o en la parte del proyecto que el está actualmente desarrollando.
+En Internet hay muy buenos artículos sobre como comentar, indentar y
+documentar nuestro código, nuestras clases o en un futuro nuestras propias bibliotecas
+de desarrollo.
+A modo de e
+jemplo yo estableceré las extensiones y directorios que tendrá cada
+parte de mi proyecto.
+•
+Los códigos fuentes en C++ tendrán la extensión
+.cpp
+.
+13
+•
+Los códigos fuentes en C tendrán la extensión
+.c
+.
+•
+Los archivos de inclusión que van en la cabecera tendrán la e
+xtensión
+.h
+•
+Etc.
+Lo anterior fue un pequeño ejemplo de cómo establecer tus propias directivas
+en el desarrollo de un proyecto. Más adelante se verán algunas reglas más específicas,
+pero desde ahora debes ir pensando en
+tu propia estandarización
+.
+Establecie
+ndo los requerimientos
+de nuestro
+proyecto
+Quizá antes de empezar a probar que si Allegro funciona, que la
+estandarización, que esto y que lo otro, sería mejor establecer
+que es lo que
+queremos hacer
+. A simple vista puede pa
+recer una pregunta sencilla, pero muchos
+de los que han programado y están empezando recién a crear su juego se encuentran
+ante un gran abanico de posibilidades de desarrollo de entre las cuales son muy pocas
+las que parecen desechables, es decir, queremos
+que nuestro juego tenga todas las
+características, todos los modos de juego, todos géneros, ocupe todos lo periféricos,
+etc. Sería mucho mejor establecer un objetivo final como por ejemplo lo sería mi
+proyecto:
+•
+ADes es un juego de naves con deslizamiento
+(scroll) vertical en 2D.
+•
+1 o 2 jugadores
+•
+El juego se divide en misiones
+•
+Varios tipos de armas con niveles de poder.
+•
+Soporte de distintos periféricos como control
+•
+Múltiples capas de juego, incluye agua, tierra y aire.
+•
+Efectos de sombre, luces, huella y
+polvo.
+Ud. dirán “¡Pero todavía es demasiado pedir para mi proyecto!”, yo les digo: sí,
+es demasiado pedir. Pero quien les ha dicho que haremos todo de una vez, para eso se
+inventó el tiempo, para gastarlo, gastarlo de buena forma. Lo que fije anteriorme
+nte
+fueron los objetivos, que es lo que yo espero que tenga el juego final. Deben sabes
+que muchos de los videojuegos comerciales quizá nunca alcanzan el objetivo inicial que
+fue fijado y todavía están a mucha distancia de hacerlo, pero en eso se trabaja y
+ese
+trabajo es lo que se denomina la
+versión de un juego
+.
+Dentro de nuestros objetivos nosotros estableceremos metas de corto plazo,
+por ejemplo para este juego la primera meta será sencilla: hacer que aparezca una
+nave en panta
+lla y que pueda moverse con el teclado. Esa si que es una
+meta
+sencilla
+para
+alcanzar
+un
+objetivo
+. Trabajemos en eso.
