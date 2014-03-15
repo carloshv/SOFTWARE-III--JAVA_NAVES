@@ -1,0 +1,152 @@
+
+
+//Programa desarrollado con JCreator 3.50
+//desarrolado por carlos edil huaman velasque
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.io.*;
+import javax.sound.sampled.*;
+
+public class Menu extends JFrame implements ActionListener{
+
+JButton com = new JButton(" COMENZAR");
+JButton sal = new JButton(" SALIR");
+
+ImageIcon ls = new ImageIcon("s.gif");
+ImageIcon lp = new ImageIcon("p.gif");
+ImageIcon la = new ImageIcon("a.gif");
+ImageIcon lc = new ImageIcon("c.gif");
+ImageIcon le = new ImageIcon("e.gif");
+ImageIcon br = new ImageIcon("ba.gif");
+ImageIcon gal = new ImageIcon("galaxy.gif");
+
+JLabel gala = new JLabel(gal);
+JLabel gala1 = new JLabel(gal);
+
+JLabel es = new JLabel(ls);
+JLabel ep = new JLabel(lp);
+JLabel ea = new JLabel(la);
+JLabel ec = new JLabel(lc);
+JLabel ee = new JLabel(le);
+
+JLabel barra = new JLabel(br);
+
+Clip sonido;
+
+Nave nave = new Nave(this,true);
+
+public static void main(String[]args){
+Menu ventana = new Menu();
+ventana.setVisible(true);
+
+ventana.addWindowListener(new WindowAdapter() {
+public void windowClosing(WindowEvent e) {
+System.exit(0);
+}
+});
+
+}
+
+public Menu(){
+super("UNIVERSE PLAY");
+Container c=getContentPane();;
+c=getContentPane();
+setLayout(null);
+setSize(500,200);
+setLocationRelativeTo(null);
+setResizable(false);
+setIconImage(Toolkit.getDefaultToolkit().getImage( "strella.png"));
+c.setBackground(Color.BLACK);
+
+c.add(gala);
+gala.setLocation(5,60);
+gala.setSize(130,100);
+gala.setVisible(true);
+
+c.add(gala1);
+gala1.setLocation(355,60);
+gala1.setSize(130,100);
+gala1.setVisible(true);
+
+c.add(es);
+es.setLocation(115,5);
+es.setSize(50,50);
+es.setVisible(true);
+
+c.add(ep);
+ep.setLocation(170,5);
+ep.setSize(50,50);
+ep.setVisible(true);
+
+c.add(ea);
+ea.setLocation(225,5);
+ea.setSize(50,50);
+ea.setVisible(true);
+
+c.add(ec);
+ec.setLocation(280,5);
+ec.setSize(50,50);
+ec.setVisible(true);
+
+c.add(ee);
+ee.setLocation(335,5);
+ee.setSize(50,50);
+ee.setVisible(true);
+
+c.add(barra);
+barra.setLocation(0,135);
+barra.setSize(500,50);
+barra.setVisible(true);
+
+c.add(com);
+com.setSize(200,20);
+com.setLocation(150,80);
+com.addActionListener(this);
+
+c.add(sal);
+sal.setSize(200,20);
+sal.setLocation(150,120);
+sal.addActionListener(this);
+
+
+
+sound();
+rep();
+
+}
+
+public void actionPerformed(ActionEvent e){
+if(e.getSource()==com){
+para();
+nave.setVisible(true);
+}
+
+if(e.getSource()==sal){
+System.exit(0);
+
+
+}
+
+}
+
+public void sound(){
+try {
+sonido = AudioSystem.getClip();
+sonido.open(AudioSystem.getAudioInputStream(new File("sonido.wav")));
+
+}
+catch (Exception ev) { }
+}
+
+public void rep(){
+sonido.loop(Clip.LOOP_CONTINUOUSLY);
+}
+
+public void para(){
+sonido.stop();
+}
+
+
+}
