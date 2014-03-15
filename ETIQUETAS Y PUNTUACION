@@ -1,0 +1,90 @@
+//Metodo que ocupo para el disparo de la nave
+public void mousePressed(MouseEvent ev) {
+
+if(ev.getY()>400 && ev.getX()>31 && ev.getX()<650){
+sounddis();
+rep1();
+
+int x = (ev.getX()-3);
+int y1 = 400, y2=350;
+
+for(y1=400;y2>0;y1--,y2--){
+
+Graphics g=getGraphics();
+time.relog(1);
+g.setColor(Color.YELLOW);
+g.drawLine(x,y1,x,y2);
+g.setColor(Color.YELLOW);
+g.drawLine(x+3,y1,x+3,y2);
+g.setColor(Color.YELLOW);
+g.drawLine(x-3,y1,x-3,y2);
+
+time.relog(1);
+
+g.setColor(Color.BLACK);
+g.drawLine(x,y1,x,y2);
+g.setColor(Color.BLACK);
+g.drawLine(x+3,y1,x+3,y2);
+g.setColor(Color.BLACK);
+g.drawLine(x-3,y1,x-3,y2);
+z=x;
+}
+
+atina();
+
+}
+}
+
+public void mouseExited(MouseEvent ev) {}
+public void mouseReleased(MouseEvent ev) {}
+public void mouseClicked(MouseEvent ev) {}
+public void mouseEntered(MouseEvent ev) {}
+public void mouseDragged(MouseEvent ev) {}
+
+//Escuchador de aventos de los botones
+public void actionPerformed(ActionEvent evt){
+if(evt.getSource()==n1){
+obj1.start();
+}
+
+if(evt.getSource()==re){
+setVisible(false);
+exp.setVisible(false);
+nd=0;
+naves.setText("Naves derribadas: "+nd);
+pun.setText("Puntuacion: " +(nd*0));
+}
+
+if(evt.getSource()==n2){
+exp.setVisible(false);
+obj1.suspend();
+}
+
+if(evt.getSource()==n3){
+exp.setVisible(false);
+obj1.resume();
+}
+
+if(evt.getSource()==vn){
+t2 = 500;
+t3 = 1000;
+exp.setVisible(false);
+obj1.resume();
+}
+
+if(evt.getSource()==v1){
+t2 = 400;
+t3 = 800;
+exp.setVisible(false);
+obj1.resume();
+
+}
+
+if(evt.getSource()==v2){
+t2 = 200;
+t3 = 400;
+exp.setVisible(false);
+obj1.resume();
+}
+
+}
