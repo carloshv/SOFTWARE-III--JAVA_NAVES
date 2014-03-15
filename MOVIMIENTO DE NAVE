@@ -1,0 +1,11 @@
+//Metodo para que se mueva la nave al arrastrar el mouse
+public void mouseMoved(MouseEvent ev)
+{
+
+if(ev.getX()>50 && ev.getX()<600 && ev.getY()>400){
+int posx = (ev.getX() - 35);
+navee.setLocation(posx,370);
+
+}
+
+}
