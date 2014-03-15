@@ -1,0 +1,215 @@
+//ESTA ES LA CLASE NAVE
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.io.*;
+import javax.sound.sampled.*;
+
+public class Nave extends JDialog implements MouseListener, MouseMotionListener, ActionListener{
+
+
+ImageIcon nave = new ImageIcon("na.png");
+ImageIcon nave2 = new ImageIcon("nave2.gif");
+ImageIcon nave3 = new ImageIcon("tab.gif");
+ImageIcon ex = new ImageIcon("exp1.gif");
+ImageIcon str = new ImageIcon("st.gif");
+
+JLabel navee = new JLabel(nave);
+
+JLabel img = new JLabel(nave3);
+
+JLabel naveee = new JLabel(nave2);
+JLabel naveeee = new JLabel(nave2);
+JLabel naveeeee = new JLabel(nave2);
+
+JLabel e1 = new JLabel(str);
+JLabel e2 = new JLabel(str);
+JLabel e3 = new JLabel(str);
+JLabel e4 = new JLabel(str);
+JLabel e5 = new JLabel(str);
+JLabel e6 = new JLabel(str);
+JLabel e7 = new JLabel(str);
+JLabel e8 = new JLabel(str);
+JLabel e9 = new JLabel(str);
+JLabel e0 = new JLabel(str);
+
+JLabel exp = new JLabel(ex);
+JLabel exp1 = new JLabel(ex);
+JLabel exp2 = new JLabel(ex);
+
+JLabel naves = new JLabel("Naves derribadas: ");
+JLabel pun = new JLabel("Puntuacion: ");
+
+JButton n1 = new JButton("COMENZAR");
+JButton n2 = new JButton("PAUSAR");
+JButton n3 = new JButton("REANUDAR");
+
+JButton vn = new JButton("NORMAL");
+JButton v1 = new JButton("RAPIDO");
+JButton v2 = new JButton("VELOZ");
+
+JButton re = new JButton("SALIR");
+
+
+Relog time = new Relog();
+Ene obj1 = new Ene();
+Estrellas obj2 = new Estrellas();
+
+
+int z=0, nd=0, punt=0;
+int t1=300,t2=500,t3=1000,posini=640;
+
+int pox =posini;
+int poy =posini;
+
+int y1 = 400, y2=350;
+
+Clip disparo;
+Clip explocion;
+
+public Nave(Frame parent, boolean modal){
+
+super(parent, modal);
+Container c=getContentPane();;
+c=getContentPane();
+setTitle("UNIVERSE PLAY");
+setLayout(null);
+setSize(800,500);
+setLocationRelativeTo(null);
+setResizable(false);
+setIconImage(Toolkit.getDefaultToolkit().getImage( "strella.png"));
+c.setBackground(Color.BLACK);
+
+c.add(navee);
+navee.setLocation(309,370);
+navee.setSize(80,100);
+navee.setVisible(true);
+
+c.add(e1);
+e1.setSize(30,30);
+e1.setVisible(false);
+
+c.add(e2);
+e2.setSize(30,30);
+e2.setVisible(false);
+
+c.add(e3);
+e3.setSize(30,30);
+e3.setVisible(false);
+
+c.add(e4);
+e4.setSize(30,30);
+e4.setVisible(false);
+
+c.add(e5);
+e5.setSize(30,30);
+e5.setVisible(false);
+
+c.add(e6);
+e6.setSize(30,30);
+e6.setVisible(false);
+
+c.add(e7);
+e7.setSize(30,30);
+e7.setVisible(false);
+
+c.add(e8);
+e8.setSize(30,30);
+e8.setVisible(false);
+
+c.add(e9);
+e9.setSize(30,30);
+e9.setVisible(false);
+
+c.add(e0);
+e0.setSize(30,30);
+e0.setVisible(false);
+
+c.add(naveee);
+naveee.setSize(100,80);
+naveee.setVisible(false);
+
+c.add(naveeee);
+naveeee.setSize(100,80);
+naveeee.setVisible(false);
+
+c.add(naveeeee);
+naveeeee.setSize(100,80);
+naveeeee.setVisible(false);
+
+c.add(exp);
+exp.setSize(100,80);
+exp.setVisible(false);
+
+c.add(naves);
+naves.setSize(150,20);
+naves.setLocation(640,5);
+naves.setFont(new Font("Arial",Font.BOLD,11));
+naves.setForeground(Color.GREEN);
+naves.setVisible(true);
+
+c.add(pun);
+pun.setSize(150,20);
+pun.setLocation(640,40);
+pun.setFont(new Font("Arial",Font.BOLD,11));
+pun.setForeground(Color.GREEN);
+pun.setVisible(true);
+
+c.add(n1);
+n1.setSize(150,20);
+n1.setLocation(640,80);
+n1.setVisible(true);
+n1.addActionListener(this);
+
+c.add(n2);
+n2.setSize(150,20);
+n2.setLocation(640,120);
+n2.setVisible(true);
+n2.addActionListener(this);
+
+c.add(n3);
+n3.setSize(150,20);
+n3.setLocation(640,160);
+n3.setVisible(true);
+n3.addActionListener(this);
+
+c.add(vn);
+vn.setSize(150,20);
+vn.setLocation(640,200);
+vn.setVisible(true);
+vn.addActionListener(this);
+
+c.add(v1);
+v1.setSize(150,20);
+v1.setLocation(640,240);
+v1.setVisible(true);
+v1.addActionListener(this);
+
+c.add(v2);
+v2.setSize(150,20);
+v2.setLocation(640,280);
+v2.setVisible(true);
+v2.addActionListener(this);
+
+c.add(re);
+re.setSize(150,20);
+re.setLocation(640,320);
+re.setVisible(true);
+re.addActionListener(this);
+
+c.add(img);
+img.setLocation(640,350);
+img.setSize(150,100);
+img.setVisible(true);
+
+
+addMouseListener(this);
+addMouseMotionListener(this);
+
+obj2.start();
+
+
+}
+
+
